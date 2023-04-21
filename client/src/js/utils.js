@@ -136,6 +136,24 @@ const random = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1) + min)
 }
 
+//Slugify String
+const slugify = (input) => {
+  let str = input
+  var from =
+    'ÁÄÂÀÃÅČÇĆĎÉĚËÈÊẼĔȆÍÌÎÏŇÑŃÓÖÒÔÕØŘŔŠŤÚŮÜÙÛÝŸŽŻáäâàãåčçćďéěëèêẽĕȇíìîïňñńóöòôõøðřŕšťúůüùûýÿžżþÞĐđßÆa·/_,:;'
+  var to =
+    'AAAAAACCCDEEEEEEEEIIIINNNOOOOOORRSTUUUUUYYZZaaaaaacccdeeeeeeeeiiiinnnooooooorrstuuuuuyyzzbBDdBAa------'
+  for (var i = 0, l = from.length; i < l; i++) {
+    str = str.replace(new RegExp(from.charAt(i), 'g'), to.charAt(i))
+  }
+  return str
+    .toLowerCase()
+    .trim()
+    .replace(/[^\w\s-]/g, '')
+    .replace(/[\s_-]+/g, '-')
+    .replace(/^-+|-+$/g, '')
+}
+
 //Exports
 export {
   delay,
@@ -148,4 +166,5 @@ export {
   throttle,
   random,
   sanitizeInput,
+  slugify,
 }
