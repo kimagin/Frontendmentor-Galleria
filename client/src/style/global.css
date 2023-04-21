@@ -26,7 +26,7 @@
 
 @layer components {
   .display {
-    @apply text-200 leading-150 text-light-gray;
+    @apply text-200 leading-[200px] text-low-gray;
   }
   .subhead1 {
     @apply text-15 leading-19;

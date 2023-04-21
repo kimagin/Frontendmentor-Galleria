@@ -1,0 +1,25 @@
+---
+import Logo from '../Logo.astro'
+import Nav from './Nav.astro'
+---
+
+<header>
+  <div class="header-container">
+    <Logo />
+    <Nav />
+  </div>
+  <span class="divider"></span>
+</header>
+
+<style>
+  header {
+    @apply px-8 flex flex-col;
+  }
+  .header-container {
+    @apply w-full flex justify-between items-center py-8;
+  }
+
+  .divider {
+    @apply border-b-[1px] border-mid-gray w-full;
+  }
+</style>
