@@ -11,7 +11,12 @@ app.use('/database',dataBaseRoute)
 app.use(express.static('public'));
 
 
+app.use('/assets', function(req, res, next) {
+  res.header('Access-Control-Allow-Origin', '*');
+  next();
+});
 
+app.use('/asset', express.static('public/assets'));
 
 app.get('/',(req,res)=>{
   res.send(`

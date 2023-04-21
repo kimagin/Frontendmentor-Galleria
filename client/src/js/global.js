@@ -13,6 +13,10 @@ import {
 const initApp = async () => {
   // 🚩 Global JavaScript ...
   log('⚡ DOM successfully Loaded')
+
+  const request = await fetch('https://galleria-server.onrender.com/image.json',{ mode: 'no-cors' })
+  console.log(request)
+
 }
 
 event(document, 'DOMContentLoaded', initApp)
