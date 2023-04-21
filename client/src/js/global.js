@@ -14,8 +14,13 @@ const initApp = async () => {
   // 🚩 Global JavaScript ...
   log('⚡ DOM successfully Loaded')
 
-  const request = await fetch('https://galleria-server.onrender.com/assets/image.json')
-  console.log(request)
+  const request = await fetch('https://galleria-server.onrender.com/assets/imagedata.json')
+  const data = await request.json()
+  
+  data.forEach(img =>{
+    const thumbnail = document.createElement('img')
+    thumbnail.src = img.thumbnail
+  })
 
 }
 
