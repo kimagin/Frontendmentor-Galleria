@@ -4,9 +4,17 @@
   "description": "Server files for the project Galleria",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "clear && nodemon ./index.js --quiet"
   },
   "keywords": [],
   "author": "Iman Kimiaei(Kimagination)",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "dotenv": "^16.0.3",
+    "nodemon": "^2.0.22"
+  }
 }

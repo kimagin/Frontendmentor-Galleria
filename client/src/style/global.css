@@ -29,7 +29,7 @@
 
 @layer components {
   .display {
-    @apply text-200 leading-[200px] text-low-gray;
+    @apply text-200 leading-[12.5rem] text-low-gray;
   }
   .subhead1 {
     @apply text-15 leading-19;
@@ -38,9 +38,9 @@
     @apply text-13 leading-17;
   }
   .link-big {
-    @apply text-12 leading-15 tracking-[2.5px] text-dark-gray;
+    @apply text-12 leading-15 tracking-[0.156rem] text-dark-gray;
   }
   .link-small {
-    @apply text-9 leading-11 tracking-[2px] text-dark-gray underline;
+    @apply text-9 leading-11 tracking-[0.125rem] text-dark-gray underline;
   }
 }
