@@ -1,8 +1,13 @@
 ---
 import '../style/global.css'
+
+// Importing the data base : console.log(data().data)
+import { data } from '../js/data.js'
+
 export interface Props {
   title: string
 }
+
 const { title = 'Galleria | Page' } = Astro.props
 ---
 
@@ -36,4 +41,5 @@ const { title = 'Galleria | Page' } = Astro.props
     href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@700&display=swap"
     rel="stylesheet"
   />
+  <script src="../js/global.js"></script>
 </head>

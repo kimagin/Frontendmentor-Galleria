@@ -1,5 +1,14 @@
+---
+export interface Props {
+  small?: boolean
+}
+
+const { small = false } = Astro.props
+---
+
 <a href="/">
   <img
+    width={small ? 80 : ''}
     src="./images/logo.svg"
     alt="galleria"
   />

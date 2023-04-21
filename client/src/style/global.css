@@ -22,6 +22,9 @@
   body {
     @apply font-serif font-bold;
   }
+  main {
+    @apply min-h-screen;
+  }
 }
 
 @layer components {

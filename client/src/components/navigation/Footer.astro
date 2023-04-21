@@ -1,1 +1,41 @@
-<footer></footer>
+---
+import Logo from '../Logo.astro'
+import Nav from '../navigation/Nav.astro'
+---
+
+<footer>
+  <div class="divider"></div>
+  <div class="footer-container">
+    <Logo small />
+    <small>
+      Galleria | Curated art gallery | &copy; <a
+        class="link-wiki"
+        href="#"
+        >Kimagination</a
+      > License <a
+        href="#"
+        class="link-wiki"
+        >MIT</a
+      ></small
+    >
+  </div>
+</footer>
+
+<style>
+  footer {
+    @apply px-8 flex flex-col;
+  }
+  small {
+    @apply text-dark-gray;
+  }
+  .footer-container {
+    @apply w-full flex flex-col justify-between items-center py-8 gap-4;
+  }
+
+  .divider {
+    @apply border-b-[1px] border-mid-gray w-full h-4;
+  }
+  .link-wiki {
+    @apply text-blue-700 text-12 underline;
+  }
+</style>
