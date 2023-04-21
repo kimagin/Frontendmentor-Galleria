@@ -22,21 +22,4 @@
   body {
     @apply font-serif;
   }
-  main {
-  }
-  h1 {
-    @apply text-56 leading-64;
-  }
-  h2 {
-    @apply text-24 leading-29;
-  }
-  h3 {
-    @apply text-18 leading-22;
-  }
-  p {
-    @apply text-14 leading-28;
-  }
-  a .link1 {
-    @apply text-[12px] leading-[15px];
-  }
 }
