@@ -1,12 +1,12 @@
 {
-  "name": "server",
+  "name": "galleria-server",
   "version": "1.0.0",
-  "description": "",
+  "description": "Server files for the project Galleria",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC"
+  "author": "Iman Kimiaei(Kimagination)",
+  "license": "MIT"
 }
