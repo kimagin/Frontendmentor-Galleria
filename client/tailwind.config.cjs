@@ -6,6 +6,7 @@ module.exports = {
   content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
   theme: {
     extend: {
+      // Typography
       fontFamily: {
         serif: ['Libre Baskerville', 'serif'],
       },
@@ -28,12 +29,18 @@ module.exports = {
         22: '22px',
         19: '19px',
         17: '17px',
-        12: '12px',
+        15: '15px',
+        11: '11px',
+
         9: '9px',
       },
-      spacing: {
-        2.5: '2.5px',
-        2: '2px',
+      // Colors
+      colors: {
+        void: '#000000',
+        'dark-gray': '#7D7D7D',
+        'mid-gray': 'E5E5E5',
+        'light-gray': '#F3F3F3',
+        snow: '#FFFFFF',
       },
     },
   },
@@ -51,6 +58,14 @@ module.exports = {
         h3: {
           fontSize: theme('fontSize.18'),
           lineHeight: theme('lineHeight.22'),
+        },
+        p: {
+          fontSize: theme('fontSize.14'),
+          lineHeight: theme('lineHeight.28'),
+        },
+        a: {
+          fontSize: theme('fontSize.9'),
+          lineHeight: theme('lineHeight.11'),
         },
       })
     }),
