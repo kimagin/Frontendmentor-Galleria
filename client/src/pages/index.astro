@@ -4,28 +4,69 @@ import { data } from '../js/data.js'
 import { slugify } from '../js/utils.js'
 import ImageComponent from '../components/ImageComponent.astro'
 const dataBase = await data().fetchData()
+const columns = new Map()
 ---
-
 <HomeLayout title="Home">
-  <section class="galleria-grid">
+  <section class="galleria">
     {/*Home Page contents */}
-    
-    <ul>{
-      dataBase.map(item=>(
-        <fragment>
-          <li>
-            <ImageComponent src={item.images.thumbnail} />
-          </li>  
-        </fragment>
+
+    {/*First 4 images */}
+    <div class="galleria-grid">{
+      dataBase.map((item,index)=>(
+            <div class="item">
+              <ImageComponent  src={item.images.thumbnail} />
+            </div>  
       ))
-      }</ul>
+      }
+    </div>
       
-    
   </section>
 </HomeLayout>
 
 <style>
-  section {
-    @apply min-h-screen bg-yellow-50 container mx-auto grid grid-cols-5;
+  .galleria {
+    @apply min-h-screen bg-yellow-50 container mx-auto;
   }
+
+  .galleria-grid {
+  -moz-column-count: 1;
+       column-count: 1;
+  -moz-column-gap: 20px;
+       column-gap: 20px;
+  -moz-column-fill: balance;
+       column-fill: balance;
+  margin: 0 auto 0;
+  
+}
+.galleria-grid .item { 
+  margin: 0 0 20px;
+  width: 100%;
+}
+
+
+@media (min-width: 600px) {
+  .galleria-grid {
+    -moz-column-count: 2;
+         column-count: 2;
+  }
+}
+@media (min-width: 900px) {
+  .galleria-grid {
+    -moz-column-count: 3;
+         column-count: 3;
+  }
+}
+@media (min-width: 1200px) {
+  .galleria-grid {
+    -moz-column-count: 4;
+         column-count: 4;
+  }
+}
+
+
 </style>
+
+<script>
+  
+</script>
+

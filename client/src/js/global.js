@@ -10,10 +10,11 @@ import {
   random, // Random number generator : random(min,max)
 } from './utils'
 
+
+
 const initApp = async () => {
   // 🚩 Global JavaScript ...
   log('⚡ DOM successfully Loaded')
-  
 
 }
 
