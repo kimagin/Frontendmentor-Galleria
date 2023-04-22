@@ -22,7 +22,8 @@ app.use('/asset', express.static('public/assets'));
 app.get('/',(req,res)=>{
   res.send(`
   Welcome to the Galleria Server...
-  Find the information about the assets in "./image.json"
+
+  Find the information about the assets in "https://galleria-server.onrender.com/assets/imagedata.json"
   `)
 })
 
