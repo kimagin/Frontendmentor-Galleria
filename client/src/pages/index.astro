@@ -3,70 +3,67 @@ import HomeLayout from '../layouts/HomeLayout.astro'
 import { data } from '../js/data.js'
 import { slugify } from '../js/utils.js'
 import ImageComponent from '../components/ImageComponent.astro'
-const dataBase = await data().fetchData()
-const columns = new Map()
+
+const SERVER = 'https://galleria-server.onrender.com/'
+const request = await fetch(SERVER + 'assets/imagedata.json')
+const dataBase = await request.json()
 ---
 <HomeLayout title="Home">
   <section class="galleria">
     {/*Home Page contents */}
-
-    {/*First 4 images */}
     <div class="galleria-grid">{
       dataBase.map((item,index)=>(
             <div class="item">
-              <ImageComponent  src={item.images.thumbnail} />
+              <ImageComponent  src={item.images.thumbnail} name={item.name} artist={item.artist.name} />
             </div>  
       ))
       }
-    </div>
-      
+    </div> 
   </section>
 </HomeLayout>
 
 <style>
   .galleria {
-    @apply min-h-screen bg-yellow-50 container mx-auto;
+    @apply min-h-screen container mx-auto max-w-7xl px-8 ;
   }
 
   .galleria-grid {
+    @apply py-8;
   -moz-column-count: 1;
-       column-count: 1;
-  -moz-column-gap: 20px;
-       column-gap: 20px;
+      column-count: 1;
+  -moz-column-gap: 2rem;
+      column-gap: 2rem;
   -moz-column-fill: balance;
-       column-fill: balance;
-  margin: 0 auto 0;
+      column-fill: balance;
+  /* margin: 0 auto 0; */
   
 }
 .galleria-grid .item { 
-  margin: 0 0 20px;
+  margin: 0 0 2rem;
   width: 100%;
 }
 
 
-@media (min-width: 600px) {
+@media (min-width: 640px) {
   .galleria-grid {
     -moz-column-count: 2;
-         column-count: 2;
+        column-count: 2;
   }
 }
-@media (min-width: 900px) {
+@media (min-width: 1024px) {
   .galleria-grid {
     -moz-column-count: 3;
-         column-count: 3;
+        column-count: 3;
   }
 }
-@media (min-width: 1200px) {
+@media (min-width: 1280px) {
   .galleria-grid {
     -moz-column-count: 4;
-         column-count: 4;
+        column-count: 4;
   }
 }
 
 
 </style>
 
-<script>
-  
-</script>
 

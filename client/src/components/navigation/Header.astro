@@ -4,16 +4,18 @@ import Nav from './Nav.astro'
 ---
 
 <header>
-  <div class="header-container container mx-auto">
-    <Logo />
-    <Nav />
-  </div>
-  <span class="divider"></span>
+  
+    <div class="header-container max-w-7xl mx-auto">
+      <Logo />
+      <Nav />
+    </div>
+    <span class="divider"></span>
+  
 </header>
 
 <style>
   header {
-    @apply px-8 flex flex-col;
+    @apply flex  flex-col container mx-auto max-w-7xl px-8;
   }
   .header-container {
     @apply w-full flex justify-between items-center py-8;

@@ -6,6 +6,10 @@ module.exports = {
   content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
   theme: {
     extend: {
+      // Screen Size
+      screens:{
+        '7xl':'80rem'
+      },
       // Typography
       fontFamily: {
         serif: ['Libre Baskerville', 'serif'],

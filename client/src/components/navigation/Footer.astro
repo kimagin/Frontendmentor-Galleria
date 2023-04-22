@@ -4,8 +4,9 @@ import Nav from '../navigation/Nav.astro'
 ---
 
 <footer>
-  <div class="divider"></div>
-  <div class="footer-container container mx-auto">
+  
+  <div class="footer-container">
+    <div class="divider"></div>
     <Logo small />
     <small>
       Galleria | Curated art gallery | &copy; <a
@@ -23,7 +24,7 @@ import Nav from '../navigation/Nav.astro'
 
 <style>
   footer {
-    @apply px-8 flex flex-col;
+    @apply flex flex-col container mx-auto max-w-7xl px-8;
   }
   small {
     @apply text-dark-gray;
