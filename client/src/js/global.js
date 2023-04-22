@@ -10,12 +10,36 @@ import {
   random, // Random number generator : random(min,max)
 } from './utils'
 
+import anime from 'animejs/lib/anime.es.js'
 
 
 const initApp = async () => {
   // 🚩 Global JavaScript ...
   log('⚡ DOM successfully Loaded')
 
+  anime({
+    targets: '.item',
+    opacity:[0,1],
+    translateY: [-8,0],
+    easing: 'easeInOutSine',
+    duration: 1000,
+    delay: anime.stagger(120)
+  });
+
+  anime({
+    targets: '.mas',
+    // opacity:[0,1],
+    // translateY: [20,0],
+    scaleX:[1,0],
+    easing: 'easeInOutQuad',
+    duration: 1200,
+    delay: anime.stagger(150),
+    complete: function(anim){
+      select('.animation-dividers').remove()
+    }
+  })
+  
+  
 }
 
 event(document, 'DOMContentLoaded', initApp)
