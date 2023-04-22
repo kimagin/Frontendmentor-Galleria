@@ -1,11 +1,26 @@
 ---
 import HomeLayout from '../layouts/HomeLayout.astro'
+import { data } from '../js/data.js'
 import { slugify } from '../js/utils.js'
+import ImageComponent from '../components/ImageComponent.astro'
+const dataBase = await data().fetchData()
 ---
 
 <HomeLayout title="Home">
   <section class="galleria-grid">
     {/*Home Page contents */}
+    
+    <ul>{
+      dataBase.map(item=>(
+        <fragment>
+          <li>
+            <ImageComponent src={item.images.thumbnail} />
+          </li>  
+        </fragment>
+      ))
+      }</ul>
+      
+    
   </section>
 </HomeLayout>
 

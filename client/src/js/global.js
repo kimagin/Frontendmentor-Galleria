@@ -13,20 +13,7 @@ import {
 const initApp = async () => {
   // 🚩 Global JavaScript ...
   log('⚡ DOM successfully Loaded')
-  const SERVER = 'https://galleria-server.onrender.com'
-
-  const request = await fetch('https://galleria-server.onrender.com/assets/imagedata.json')
-  const data = await request.json()
-  data.forEach((img) =>{
-    try{
-      const thumbnail = document.createElement('img')
-      thumbnail.src = SERVER+img.thumbnail
-      select('.galleria-grid').appendChild(thumbnail)
-    }catch(err){
-      console.log({message: err.message})
-    }
   
-  })
 
 }
 

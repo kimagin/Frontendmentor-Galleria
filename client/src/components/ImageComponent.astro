@@ -1,0 +1,12 @@
+---
+// Front-matter
+const SERVER = 'https://galleria-server.onrender.com'
+const { name, src, href, slug } = Astro.props
+---
+
+<div>
+  <img
+    src={SERVER+src}
+    alt={name}
+  />
+</div>
