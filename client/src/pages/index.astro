@@ -9,6 +9,9 @@ const SERVER = 'https://galleria-server.onrender.com/'
 
 const request = await fetch(SERVER + 'assets/imagedata.json')
 const dataBase = await request.json()
+const pages = []
+dataBase.forEach((page) => pages.push(page))
+pages.forEach((page, index) => (pages[index]['slug'] = slugify(page.name)))
 ---
 
 <HomeLayout title="Home">

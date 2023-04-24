@@ -24,6 +24,9 @@ const initApp = async () => {
     duration: 700,
     delay: anime.stagger(20),
   })
+
+  select('#router').innerText =
+    '🔥 https://localhost:3000' + window.location.pathname
 }
 
 event(document, 'DOMContentLoaded', initApp)
