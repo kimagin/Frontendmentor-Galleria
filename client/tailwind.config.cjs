@@ -7,8 +7,8 @@ module.exports = {
   theme: {
     extend: {
       // Screen Size
-      screens:{
-        '7xl':'80rem'
+      screens: {
+        '7xl': '80rem',
       },
       // Typography
       fontFamily: {

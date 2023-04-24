@@ -12,34 +12,18 @@ import {
 
 import anime from 'animejs/lib/anime.es.js'
 
-
 const initApp = async () => {
   // 🚩 Global JavaScript ...
   log('⚡ DOM successfully Loaded')
 
   anime({
     targets: '.item',
-    opacity:[0,1],
-    translateY: [-8,0],
-    easing: 'easeInOutSine',
-    duration: 1000,
-    delay: anime.stagger(120)
-  });
+    opacity: [0, 1],
 
-  anime({
-    targets: '.mas',
-    // opacity:[0,1],
-    // translateY: [20,0],
-    scaleX:[1,0],
-    easing: 'easeInOutQuad',
-    duration: 1200,
-    delay: anime.stagger(150),
-    complete: function(anim){
-      select('.animation-dividers').remove()
-    }
+    easing: 'easeInOutSine',
+    duration: 700,
+    delay: anime.stagger(20),
   })
-  
-  
 }
 
 event(document, 'DOMContentLoaded', initApp)

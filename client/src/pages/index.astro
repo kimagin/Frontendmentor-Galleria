@@ -4,7 +4,9 @@ import { data } from '../js/data.js'
 import { slugify } from '../js/utils.js'
 import ImageComponent from '../components/ImageComponent.astro'
 
+//Fetching the Database
 const SERVER = 'https://galleria-server.onrender.com/'
+
 const request = await fetch(SERVER + 'assets/imagedata.json')
 const dataBase = await request.json()
 ---
@@ -24,21 +26,6 @@ const dataBase = await request.json()
           </div>
         ))
       }
-    </div>
-    <div
-      class="animation-dividers absolute inset-0 grid grid-cols-12 grid-rows-1">
-      <div class="mas"></div>
-      <div class="mas"></div>
-      <div class="mas"></div>
-      <div class="mas"></div>
-      <div class="mas"></div>
-      <div class="mas"></div>
-      <div class="mas"></div>
-      <div class="mas"></div>
-      <div class="mas"></div>
-      <div class="mas"></div>
-      <div class="mas"></div>
-      <div class="mas"></div>
     </div>
   </section>
 </HomeLayout>
