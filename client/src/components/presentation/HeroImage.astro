@@ -1,0 +1,15 @@
+---
+export interface Props {
+  type: 'string'
+  alt: 'string'
+  classes: string[]
+}
+
+const { type, alt, classes } = Astro.props
+---
+
+<img
+  class:list={[classes]}
+  src={type}
+  {alt}
+/>

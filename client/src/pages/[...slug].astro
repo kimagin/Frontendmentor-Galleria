@@ -2,6 +2,7 @@
 import SlideShowLayout from '../layouts/SlideShowLayout.astro'
 import { data } from '../js/data'
 import { slugify } from '../js/utils'
+import HeroImage from '../components/presentation/HeroImage.astro'
 
 const SERVER = data().SERVER
 
@@ -15,40 +16,47 @@ export async function getStaticPaths() {
     page['slug'] = slugify(page.name)
   })
 
-  return pages.map(({ name, slug, images }) => {
+  return pages.map(({ name, slug, images, artist }) => {
     return {
       params: { slug },
-      props: { name, slug, images },
+      props: { name, slug, images, artist },
     }
   })
 }
 const {
-  name,
-  title,
-  text,
-  slug,
   images,
-  thumbnail = SERVER + images.thumbnail,
+  slug,
+  artist,
+  name = images.name,
+  description = images.description,
+  year = images.year,
+  artistImage = SERVER + artist.image,
+  artistName = artist.name,
+  heroSmall = SERVER + images.hero.small,
+  heroLarge = SERVER + images.hero.large,
+  gallery = SERVER + images.gallery,
 } = Astro.props
 ---
 
 <SlideShowLayout title={name}>
-  <section class="galleria absolute inset-0 -z-10">
+  <section class="presentation py-24">
     {/*Presentation Page template */}
-    <img
-      src={thumbnail}
-      alt=""
-    />
-    <h1 class="">{name}</h1>
-    <h2 id="router">
-      🚩{slug}
-    </h2>
+    <div class="image-container border w-1/3 flex justify-center items">
+      <HeroImage
+        type={heroSmall}
+        alt={name}
+        classes={['object-cover w-full']}
+      />
+    </div>
+    <div class="information-container"></div>
   </section>
 </SlideShowLayout>
 
 <style>
-  .galleria {
-    @apply min-h-screen container mx-auto max-w-7xl px-8 flex flex-col gap-8 justify-center items-center;
+  .presentation {
+    @apply container h-full mx-auto max-w-7xl px-8 flex;
+  }
+  .information-container {
+    @apply flex-1;
   }
 </style>
-<script></script>

@@ -1,12 +1,14 @@
 ---
 import Logo from '../Logo.astro'
 import Nav from './Nav.astro'
+
+const { isHome = false } = Astro.props
 ---
 
 <header>
   <div class="header-container max-w-7xl mx-auto">
     <Logo />
-    <Nav />
+    {isHome && <Nav />}
   </div>
   <span class="divider"></span>
 </header>

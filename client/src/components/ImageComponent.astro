@@ -10,7 +10,7 @@ const { name, src, href, slug, id, artist } = Astro.props
       src={SERVER + src}
       alt={name}
     />
-    <div class="overlay flex flex-col">
+    <div class="overlay">
       <div class="flex-1"></div>
       <div class="info">
         <h2 class="title">{name}</h2>
@@ -28,7 +28,7 @@ const { name, src, href, slug, id, artist } = Astro.props
   }
 
   .overlay {
-    @apply absolute inset-0 p-6 pb-8 before:bg-gradient-to-b before:from-low-gray before:to-low-gray/20 before:absolute before:inset-0 before:opacity-0 before:hover:opacity-70 before:-z-0 cursor-pointer before:transition-all before:duration-500 before:ease-in-out bg-void/5;
+    @apply flex flex-col absolute inset-0 p-6 pb-8 before:bg-gradient-to-b before:from-low-gray before:to-low-gray/20 before:absolute before:inset-0 before:opacity-0 before:hover:opacity-70 before:-z-0 cursor-pointer before:transition-all before:duration-500 before:ease-in-out bg-void/5;
   }
 
   .info {
