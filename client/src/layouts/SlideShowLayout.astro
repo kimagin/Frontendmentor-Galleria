@@ -1,18 +1,15 @@
 ---
 import BaseHead from '../components/BaseHead.astro'
 import Header from '../components/navigation/Header.astro'
-import Footer from '../components/navigation/Footer.astro'
-import Controls from '../components/presentation/Controls.astro'
 const { title } = Astro.props
 ---
 
 <html lang="en">
   <BaseHead title={`Galleria | ${title}`} />
-  <body class="h-screen flex flex-col justify-between">
+  <body class="h-screen flex flex-col">
     <Header />
-    <main class="h-full">
+    <main class="flex flex-col h-full w-full max-w-7xl mx-auto">
       <slot />
     </main>
-    <Controls />
   </body>
 </html>

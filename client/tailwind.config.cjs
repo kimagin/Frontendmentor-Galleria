@@ -41,7 +41,7 @@ module.exports = {
       colors: {
         void: '#000000',
         'dark-gray': '#7D7D7D',
-        'mid-gray': 'E5E5E5',
+        'mid-gray': '#E5E5E5',
         'low-gray': '#F3F3F3',
 
         snow: '#FFFFFF',

@@ -2,9 +2,8 @@
 import SlideShowLayout from '../layouts/SlideShowLayout.astro'
 import { data } from '../js/data'
 import { slugify } from '../js/utils'
-import HeroImage from '../components/presentation/HeroImage.astro'
-
-const SERVER = data().SERVER
+import PresentationCanvas from '../components/presentation/PresentationCanvas.astro'
+import NavigationControlPanel from '../components/navigation/NavigationControlPanel.astro'
 
 // Dynamic rout creation
 export async function getStaticPaths() {
@@ -16,47 +15,58 @@ export async function getStaticPaths() {
     page['slug'] = slugify(page.name)
   })
 
-  return pages.map(({ name, slug, images, artist }) => {
-    return {
-      params: { slug },
-      props: { name, slug, images, artist },
+  return pages.map(
+    ({ name, slug, year, description, source, artist, images }) => {
+      return {
+        params: { slug },
+        props: {
+          slug,
+          name,
+          year,
+          description,
+          artistName: artist.name,
+          artistImage: SERVER + artist.image,
+          thumbnail: SERVER + images.thumbnail,
+          heroSmall: SERVER + images.hero.small,
+          heroLarge: SERVER + images.hero.large,
+          galleryImage: SERVER + images.gallery,
+        },
+      }
     }
-  })
+  )
 }
+
 const {
-  images,
-  slug,
-  artist,
-  name = images.name,
-  description = images.description,
-  year = images.year,
-  artistImage = SERVER + artist.image,
-  artistName = artist.name,
-  heroSmall = SERVER + images.hero.small,
-  heroLarge = SERVER + images.hero.large,
-  gallery = SERVER + images.gallery,
+  name,
+  year,
+  description,
+  source,
+  artistName,
+  artistImage,
+  thumbnail,
+  heroSmall,
+  heroLarge,
+  galleryImage,
 } = Astro.props
 ---
 
 <SlideShowLayout title={name}>
-  <section class="presentation py-24">
+  <section class="container mx-auto max-w-7xl px-8 flex justify-between h-full">
     {/*Presentation Page template */}
-    <div class="image-container border w-1/3 flex justify-center items">
-      <HeroImage
-        type={heroSmall}
-        alt={name}
-        classes={['object-cover w-full']}
+    <div class="flex pt-24 pb-12 border-4">
+      <PresentationCanvas
+        {name}
+        {year}
+        {description}
+        {source}
+        {artistName}
+        {artistImage}
+        {thumbnail}
+        {heroSmall}
+        {heroLarge}
+        {galleryImage}
       />
     </div>
-    <div class="information-container"></div>
   </section>
+  <NavigationControlPanel />
 </SlideShowLayout>
-
-<style>
-  .presentation {
-    @apply container h-full mx-auto max-w-7xl px-8 flex;
-  }
-  .information-container {
-    @apply flex-1;
-  }
-</style>
