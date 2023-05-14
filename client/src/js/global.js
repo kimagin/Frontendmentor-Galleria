@@ -15,7 +15,6 @@ import anime from 'animejs/lib/anime.es.js'
 const initApp = async () => {
   // 🚩 Global JavaScript ...
   log('⚡ DOM successfully Loaded')
-
   anime({
     targets: '.item',
     opacity: [0, 1],

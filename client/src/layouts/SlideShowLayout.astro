@@ -1,7 +1,10 @@
 ---
 import BaseHead from '../components/BaseHead.astro'
 import Header from '../components/navigation/Header.astro'
-const { title } = Astro.props
+export interface Props{
+  title:string
+}
+const { title } = Astro.props as Props
 ---
 
 <html lang="en">

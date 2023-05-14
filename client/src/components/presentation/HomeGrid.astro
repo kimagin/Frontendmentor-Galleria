@@ -3,7 +3,7 @@ import ImageComponent from "../ImageComponent.astro";
 import { slugify } from '../../js/utils'
 
 //Fetching the Database
-const SERVER = 'https://galleria-server.onrender.com/'
+const SERVER = import.meta.env.SERVER
 
 const request = await fetch(SERVER + 'assets/imagedata.json')
 const dataBase = await request.json()

@@ -3,7 +3,7 @@ import Logo from '../Logo.astro'
 import Nav from './Nav.astro'
 
 export interface Props {
-  isHome: boolean
+  isHome?: boolean
 }
 
 const { isHome = false } = Astro.props as Props
