@@ -1,44 +1,34 @@
 ---
 import { slugify } from '../js/utils.js'
 const SERVER = 'https://galleria-server.onrender.com'
-const { name, src, href, slug, id, artist } = Astro.props
+export interface Props {
+  name: string
+  src: string
+  href?: string
+  slug?: string
+  id?: string
+  artist?: string
+}
+const { name, src, href, slug, id, artist } = Astro.props as Props
 ---
 
-<div class="image-container group">
+<div class="relative overflow-hidden group">
   <a href={slugify(name)}>
     <img
+      class="w-full h-full object-cover scale-105 md:scale-110 transition md:group-hover:scale-105  duration-1000"
       src={SERVER + src}
       alt={name}
     />
-    <div class="overlay">
+    <div class="overlay flex flex-col absolute inset-0 p-6 pb-8 before:bg-gradient-to-b before:from-low-gray before:to-low-gray/20 before:absolute before:inset-0 before:opacity-0 before:hover:opacity-70 before:-z-0 cursor-pointer before:transition-all before:duration-500 before:ease-in-out bg-void/5">
       <div class="flex-1"></div>
-      <div class="info">
-        <h2 class="title">{name}</h2>
-        <p class="artist subhead2">{artist}</p>
+      <div class="space-y-2 z-20">
+        <h2 class="text-low-gray">{name}</h2>
+        <p class="artist text-low-gray/60 subhead2">{artist}</p>
       </div>
     </div>
   </a>
 </div>
-<style>
-  .image-container {
-    @apply relative overflow-hidden;
-  }
-  img {
-    @apply w-full h-full object-cover scale-105 md:scale-110 transition md:group-hover:scale-105  duration-1000;
-  }
 
-  .overlay {
-    @apply flex flex-col absolute inset-0 p-6 pb-8 before:bg-gradient-to-b before:from-low-gray before:to-low-gray/20 before:absolute before:inset-0 before:opacity-0 before:hover:opacity-70 before:-z-0 cursor-pointer before:transition-all before:duration-500 before:ease-in-out bg-void/5;
-  }
 
-  .info {
-    @apply space-y-2 z-20;
-  }
-  .title {
-    @apply text-low-gray;
-  }
 
-  .artist {
-    @apply text-low-gray/60;
-  }
-</style>
+

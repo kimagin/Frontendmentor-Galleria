@@ -1,0 +1,62 @@
+---
+import ImageComponent from "../ImageComponent.astro";
+import { slugify } from '../../js/utils'
+
+//Fetching the Database
+const SERVER = 'https://galleria-server.onrender.com/'
+
+const request = await fetch(SERVER + 'assets/imagedata.json')
+const dataBase = await request.json()
+const pages = []
+dataBase.forEach((page) => pages.push(page))
+pages.forEach((page, index) => (pages[index]['slug'] = slugify(page.name)))
+---
+
+<div class="galleria-grid py-8 ">
+  {
+    dataBase.map((item, index) => (
+      <div class="item">
+        <ImageComponent
+          src={item.images.thumbnail}
+          name={item.name}
+          artist={item.artist.name}
+        />
+      </div>
+    ))
+  }
+</div>
+
+<style>
+  .galleria-grid { 
+    -moz-column-count: 1;
+    column-count: 1;
+    -moz-column-gap: 2rem;
+    column-gap: 2rem;
+    -moz-column-fill: balance;
+    column-fill: balance;
+    /* margin: 0 auto 0; */
+  }
+  .galleria-grid .item {
+    margin: 0 0 2rem;
+    width: 100%;
+  }
+
+  @media (min-width: 640px) {
+    .galleria-grid {
+      -moz-column-count: 2;
+      column-count: 2;
+    }
+  }
+  @media (min-width: 1024px) {
+    .galleria-grid {
+      -moz-column-count: 3;
+      column-count: 3;
+    }
+  }
+  @media (min-width: 1280px) {
+    .galleria-grid {
+      -moz-column-count: 4;
+      column-count: 4;
+    }
+  }
+</style>

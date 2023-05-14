@@ -2,7 +2,11 @@
 import Logo from '../Logo.astro'
 import Nav from './Nav.astro'
 
-const { isHome = false } = Astro.props
+export interface Props {
+  isHome: boolean
+}
+
+const { isHome = false } = Astro.props as Props
 ---
 
 <header class="flex flex-col container mx-auto max-w-7xl px-8">

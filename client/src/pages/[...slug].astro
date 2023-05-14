@@ -35,6 +35,18 @@ export async function getStaticPaths() {
     }
   )
 }
+export interface Props {
+  name: string
+  year: number
+  description: string
+  source: string
+  artistName: string
+  artistImage: string
+  thumbnail: string
+  heroSmall: string
+  heroLarge: string
+  galleryImage: string
+}
 
 const {
   name,
@@ -47,7 +59,7 @@ const {
   heroSmall,
   heroLarge,
   galleryImage,
-} = Astro.props
+} = Astro.props as Props
 ---
 
 <SlideShowLayout title={name}>
