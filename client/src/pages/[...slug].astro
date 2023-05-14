@@ -36,7 +36,7 @@ export async function getStaticPaths() {
 }
 export interface Props {
   name: string
-  year: number
+  year: string
   description: string
   source: string
   artistName: string
@@ -62,9 +62,9 @@ const {
 ---
 
 <SlideShowLayout title={name}>
-  <section class="container mx-auto max-w-7xl px-8 flex justify-between h-full">
+  <section class="container mx-auto max-w-7xl px-8">
     {/*Presentation Page template */}
-    <div class="flex pt-24 pb-12 border-4">
+    
       <PresentationCanvas
         {name}
         {year}
@@ -77,7 +77,7 @@ const {
         {heroLarge}
         {galleryImage}
       />
-    </div>
+    
+    <NavigationControlPanel />
   </section>
-  <NavigationControlPanel />
 </SlideShowLayout>
