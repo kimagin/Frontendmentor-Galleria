@@ -1,39 +1,32 @@
 ---
 export interface Props {
-  name: string
-  year: string 
-  description: string
-  source: string
-  artistName: string
-  artistImage: string
-  thumbnail?: string
-  heroSmall?: string
-  heroLarge?: string
-  galleryImage?: string
+  name: string;
+  year: string;
+  description: string;
+  source: string;
+  artistName: string;
+  artistImage: string;
+  thumbnail?: string;
+  heroSmall?: string;
+  heroLarge?: string;
+  galleryImage?: string;
 }
 
 const {
-  name = 'Artist Name',
-  year = 'Year',
-  description = 'About the painting...',
-  source = 'More information on the internet',
-  artistName = 'Artist Name',
-  artistImage = 'Artist Portrait',
+  name = "Artist Name",
+  year = "Year",
+  description = "About the painting...",
+  source = "More information on the internet",
+  artistName = "Artist Name",
+  artistImage = "Artist Portrait",
   thumbnail,
   heroSmall,
   heroLarge,
   galleryImage,
-} = Astro.props
+} = Astro.props;
 ---
 
-<div class="h-auto">      
-        <img
-          width="560px"
-          height="475px"
-          src={heroLarge}
-          alt=""
-        />
-</div>
-
-
-
+<section class="absolute inset-0 py-8 flex">
+  <img class="h-full object-cover" src={heroLarge} alt="" />
+  <!-- Page Navigation -->
+</section>

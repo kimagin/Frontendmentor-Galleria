@@ -1,21 +1,21 @@
 ---
 import ImageComponent from "../ImageComponent.astro";
-import { slugify } from '../../js/utils'
+import { slugify } from "../../js/utils";
 
 //Fetching the Database
-const SERVER = import.meta.env.SERVER
+const SERVER = import.meta.env.SERVER;
 
-const request = await fetch(SERVER + 'assets/imagedata.json')
-const dataBase = await request.json()
-const pages = []
-dataBase.forEach((page) => pages.push(page))
-pages.forEach((page, index) => (pages[index]['slug'] = slugify(page.name)))
+const request = await fetch(SERVER + "assets/imagedata.json");
+const dataBase = await request.json();
+const pages = [];
+dataBase.forEach((page) => pages.push(page));
+pages.forEach((page, index) => (pages[index]["slug"] = slugify(page.name)));
 ---
 
-<div class="galleria-grid py-8 ">
+<div class="galleria-grid">
   {
     dataBase.map((item, index) => (
-      <div class="item">
+      <div class="item ">
         <ImageComponent
           src={item.images.thumbnail}
           name={item.name}
@@ -26,8 +26,8 @@ pages.forEach((page, index) => (pages[index]['slug'] = slugify(page.name)))
   }
 </div>
 
-<style>
-  .galleria-grid { 
+<style is:inline>
+  .galleria-grid {
     -moz-column-count: 1;
     column-count: 1;
     -moz-column-gap: 2rem;

@@ -1,25 +1,27 @@
 ---
-import { slugify } from '../js/utils.js'
-const SERVER = import.meta.env.SERVER
+import { slugify } from "../js/utils.js";
+const SERVER = import.meta.env.SERVER;
 export interface Props {
-  name: string
-  src: string
-  href?: string
-  slug?: string
-  id?: string
-  artist?: string
+  name: string;
+  src: string;
+  href?: string;
+  slug?: string;
+  id?: string;
+  artist?: string;
 }
-const { name, src, href, slug, id, artist } = Astro.props as Props
+const { name, src, href, slug, id, artist } = Astro.props as Props;
 ---
 
 <div class="relative overflow-hidden group">
   <a href={slugify(name)}>
     <img
-      class="w-full h-full object-cover scale-105 md:scale-110 transition md:group-hover:scale-105  duration-1000"
+      class="w-full h-full object-cover scale-105 md:scale-110 transition md:group-hover:scale-105 duration-1000"
       src={SERVER + src}
       alt={name}
     />
-    <div class="overlay flex flex-col absolute inset-0 p-6 pb-8 before:bg-gradient-to-b before:from-low-gray before:to-low-gray/20 before:absolute before:inset-0 before:opacity-0 before:hover:opacity-70 before:-z-0 cursor-pointer before:transition-all before:duration-500 before:ease-in-out bg-void/5">
+    <div
+      class="overlay flex flex-col absolute inset-0 p-6 pb-8 before:bg-gradient-to-b before:from-low-gray before:to-low-gray/20 before:absolute before:inset-0 before:opacity-0 before:hover:opacity-70 before:-z-0 cursor-pointer before:transition-all before:duration-500 before:ease-in-out bg-void/5"
+    >
       <div class="flex-1"></div>
       <div class="space-y-2 z-20">
         <h2 class="text-low-gray">{name}</h2>
@@ -28,7 +30,3 @@ const { name, src, href, slug, id, artist } = Astro.props as Props
     </div>
   </a>
 </div>
-
-
-
-

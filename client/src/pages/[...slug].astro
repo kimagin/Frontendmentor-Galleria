@@ -1,18 +1,18 @@
 ---
-import SlideShowLayout from '../layouts/SlideShowLayout.astro'
-import { slugify } from '../js/utils'
-import PresentationCanvas from '../components/presentation/PresentationCanvas.astro'
-import NavigationControlPanel from '../components/navigation/NavigationControlPanel.astro'
+import SlideShowLayout from "../layouts/SlideShowLayout.astro";
+import { slugify } from "../js/utils";
+import PresentationCanvas from "../components/presentation/PresentationCanvas.astro";
+import NavigationControlPanel from "../components/navigation/NavigationControlPanel.astro";
 
 // Dynamic rout creation
 export async function getStaticPaths() {
-  const SERVER = import.meta.env.SERVER
-  const request = await fetch(SERVER + 'assets/imagedata.json')
-  const dataBase = await request.json()
-  const pages = [...dataBase]
+  const SERVER = import.meta.env.SERVER;
+  const request = await fetch(SERVER + "assets/imagedata.json");
+  const dataBase = await request.json();
+  const pages = [...dataBase];
   pages.forEach((page) => {
-    page['slug'] = slugify(page.name)
-  })
+    page["slug"] = slugify(page.name);
+  });
 
   return pages.map(
     ({ name, slug, year, description, source, artist, images }) => {
@@ -30,21 +30,21 @@ export async function getStaticPaths() {
           heroLarge: SERVER + images.hero.large,
           galleryImage: SERVER + images.gallery,
         },
-      }
+      };
     }
-  )
+  );
 }
 export interface Props {
-  name: string
-  year: string
-  description: string
-  source: string
-  artistName: string
-  artistImage: string
-  thumbnail: string
-  heroSmall: string
-  heroLarge: string
-  galleryImage: string
+  name: string;
+  year: string;
+  description: string;
+  source: string;
+  artistName: string;
+  artistImage: string;
+  thumbnail: string;
+  heroSmall: string;
+  heroLarge: string;
+  galleryImage: string;
 }
 
 const {
@@ -58,26 +58,22 @@ const {
   heroSmall,
   heroLarge,
   galleryImage,
-} = Astro.props as Props
+} = Astro.props as Props;
 ---
 
 <SlideShowLayout title={name}>
-  <section class="container mx-auto max-w-7xl px-8">
-    {/*Presentation Page template */}
-    
-      <PresentationCanvas
-        {name}
-        {year}
-        {description}
-        {source}
-        {artistName}
-        {artistImage}
-        {thumbnail}
-        {heroSmall}
-        {heroLarge}
-        {galleryImage}
-      />
-    
-    <NavigationControlPanel />
-  </section>
+  {/*Presentation Page template */}
+
+  <PresentationCanvas
+    {name}
+    {year}
+    {description}
+    {source}
+    {artistName}
+    {artistImage}
+    {thumbnail}
+    {heroSmall}
+    {heroLarge}
+    {galleryImage}
+  />
 </SlideShowLayout>

@@ -1,18 +1,17 @@
 ---
-import Logo from '../Logo.astro'
-import Nav from './Nav.astro'
+import Logo from "../Logo.astro";
+import Nav from "./Nav.astro";
 
 export interface Props {
-  isHome?: boolean
+  isHome?: boolean;
 }
 
-const { isHome = false } = Astro.props as Props
+const { isHome = false } = Astro.props as Props;
 ---
 
-<header class="flex flex-col container mx-auto max-w-7xl px-8">
-  <div class="max-w-7xl mx-auto w-full flex justify-between items-center py-8">
+<header class="w-full">
+  <div class="w-full flex justify-between items-center py-8 border-b">
     <Logo />
     {isHome && <Nav />}
   </div>
-  <span class="border-b-[1px] border-mid-gray w-full"></span>
 </header>
