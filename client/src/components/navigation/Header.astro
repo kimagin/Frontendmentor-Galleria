@@ -9,7 +9,9 @@ export interface Props {
 const { isHome = false } = Astro.props as Props;
 ---
 
-<div class="w-ful flex justify-between items-center py-10 border-b">
+<div
+  class="w-ful flex justify-between items-center py-10 border-b z-50 bg-white"
+>
   <Logo />
   {isHome && <Nav />}
 </div>

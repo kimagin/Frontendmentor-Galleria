@@ -1,4 +1,5 @@
 ---
+import Link from "../navigation/Link.astro";
 export interface Props {
   name: string;
   year: string;
@@ -26,6 +27,46 @@ const {
 } = Astro.props;
 ---
 
-<section class="absolute inset-0 py-10 flex" data-name={name}>
-  <img class="h-full object-cover" src={heroLarge} alt="" />
+<section class="absolute inset-0 flex items-center h-full" data-name={name}>
+  <!-- Album -->
+  <div class="flex justify-between w-full">
+    <div class="flex h-fit">
+      <!-- Hero Image -->
+      <div class="h-fit relative -z-0">
+        <img
+          width="470px"
+          height="560px"
+          class="h-fit object-contain"
+          src={heroLarge}
+          alt=""
+        />
+        <!-- Artist Image -->
+        <img
+          class="ml-[1.875rem] absolute -right-[9.87rem] -bottom-[64px]"
+          width="128"
+          height="128"
+          src={artistImage}
+        />
+      </div>
+
+      <div class="flex flex-col h-fit justify-between">
+        <!-- Title -->
+        <div class="flex flex-col gap-8 relative">
+          <span class="absolute -inset-[4rem] bg-white -z-0"></span>
+          <h1 class="z-10 max-w-[23.75rem]">{name}</h1>
+          <h3 class="subhead1 w-fit text-dark-gray z-10">{artistName}</h3>
+        </div>
+      </div>
+    </div>
+    <h1 class="display right-0 absolute -z-0">{year}</h1>
+    <!-- Descriptions -->
+    <div class="flex flex-col justify-between z-10 mr-12 w-1/3">
+      <p class="min-w-[21.8rem] w-[21.8rem] pt-36 text-dark-gray">
+        {description}
+      </p>
+      <div class="mt-4">
+        <Link href="" text="GO TO SOURCE" />
+      </div>
+    </div>
+  </div>
 </section>
