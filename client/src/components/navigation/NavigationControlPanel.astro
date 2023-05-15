@@ -21,9 +21,9 @@ import NavigationButton from "./NavigationButton.astro";
       <h3>Starry Night</h3>
       <p class="subhead2">Vincent Van Gogh</p>
     </div>
-    <div class="flex">
+    <div class="flex gap-8">
       <!-- Next Slide -->
-      <NavigationButton backward disabled />
+      <NavigationButton backward />
       <NavigationButton forward />
       <!-- Previous Slide -->
     </div>
@@ -88,7 +88,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   let w = 0;
   let progressInterval;
-  const duration = 10000; // 10 seconds in milliseconds
+  const duration = 20000; // 20 seconds in milliseconds
   const startTime = Date.now();
 
   progressInterval = setInterval(() => {
@@ -104,5 +104,20 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
     progressBar.style.width = `${w}%`;
   }, 1);
+
+  //Media Buttons
+  const prev = document.getElementById("prev");
+  const next = document.getElementById("next");
+
+  if (prevObject === null) {
+    prev.classList.add("disabled");
+  } else {
+    prev.addEventListener("click", () => (window.location.href = prevLink));
+  }
+  if (nextObject === null) {
+    next.classList.add("disabled");
+  } else {
+    next.addEventListener("click", () => (window.location.href = nextLink));
+  }
 });
 </script>

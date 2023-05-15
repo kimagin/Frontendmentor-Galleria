@@ -1,10 +1,13 @@
 ---
+import { slugify } from "../../js/utils";
 const SERVER = import.meta.env.SERVER;
 const request = await fetch(SERVER + "assets/imagedata.json");
+const imageData = await request.json();
+const start = slugify(imageData[0].name);
 ---
 
 <nav>
-  <a href="" class="link-big uppercase hover:text-void transition-colors"
+  <a href={start} class="link-big uppercase hover:text-void transition-colors"
     >start slideshow</a
   >
 </nav>
