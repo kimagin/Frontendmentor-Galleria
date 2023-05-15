@@ -26,10 +26,6 @@ const {
 } = Astro.props;
 ---
 
-<section
-  class="absolute inset-0 py-10 flex"
-  data-name={name}
-  data-artist={artistName}
->
+<section class="absolute inset-0 py-10 flex" data-name={name}>
   <img class="h-full object-cover" src={heroLarge} alt="" />
 </section>

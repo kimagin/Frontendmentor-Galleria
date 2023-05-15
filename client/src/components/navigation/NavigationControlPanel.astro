@@ -35,20 +35,69 @@ const information = document.getElementsByTagName("section")[0];
 const title = document.getElementsByTagName("h3")[0];
 const subtitle = document.querySelector(".subhead2");
 const progressBar = document.querySelector(".progress");
+const SERVER = import.meta.env.SERVER;
 
-title.textContent = information.dataset.name;
-subtitle.textContent = information.dataset.artist;
+//Slugify String
+const slugify = (input) => {
+  let str = input;
+  var from =
+    "ÁÄÂÀÃÅČÇĆĎÉĚËÈÊẼĔȆÍÌÎÏŇÑŃÓÖÒÔÕØŘŔŠŤÚŮÜÙÛÝŸŽŻáäâàãåčçćďéěëèêẽĕȇíìîïňñńóöòôõøðřŕšťúůüùûýÿžżþÞĐđßÆa·/_,:;";
+  var to =
+    "AAAAAACCCDEEEEEEEEIIIINNNOOOOOORRSTUUUUUYYZZaaaaaacccdeeeeeeeeiiiinnnooooooorrstuuuuuyyzzbBDdBAa------";
+  for (var i = 0, l = from.length; i < l; i++) {
+    str = str.replace(new RegExp(from.charAt(i), "g"), to.charAt(i));
+  }
+  return str
+    .toLowerCase()
+    .trim()
+    .replace(/[^\w\s-]/g, "")
+    .replace(/[\s_-]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+};
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
+  // dataBase
+  res = await fetch(SERVER + "assets/imagedata.json");
+  const dataBase = await res.json();
+
+  // Current Image data
+  const currentImage = dataBase.filter((data) => {
+    return data.name === information.dataset.name;
+  });
+
+  // Find next and previous image links
+  const index = dataBase.findIndex(
+    (obj) => obj.name === currentImage[0].name
+  );
+
+  let prevObject, nextObject;
+
+  if (index !== -1) {
+    const prevIndex = index - 1 >= 0 ? index - 1 : null;
+    const nextIndex = index + 1 < dataBase.length ? index + 1 : null;
+    prevObject = prevIndex !== null ? dataBase[prevIndex] : null;
+    nextObject = nextIndex !== null ? dataBase[nextIndex] : null;
+  }
+  const prevLink = prevObject !== null ? slugify(prevObject.name) : "/";
+  const nextLink = nextObject !== null ? slugify(nextObject.name) : "/";
+  console.log(prevLink, nextLink);
+
+  //Populating the Dom
+  title.textContent = currentImage[0].name;
+  subtitle.textContent = currentImage[0].artist.name;
+
   let w = 0;
   let progressInterval;
-  const duration = 10000; // 5 seconds in milliseconds
+  const duration = 10000; // 10 seconds in milliseconds
   const startTime = Date.now();
 
   progressInterval = setInterval(() => {
     const elapsedTime = Date.now() - startTime;
     if (elapsedTime >= duration) {
       clearInterval(progressInterval);
+
+      window.location.href = nextLink;
+
       w = 0;
     } else {
       w = (elapsedTime / duration) * 100;
