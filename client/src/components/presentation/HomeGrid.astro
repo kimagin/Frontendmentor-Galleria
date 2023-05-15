@@ -12,19 +12,21 @@ dataBase.forEach((page) => pages.push(page));
 pages.forEach((page, index) => (pages[index]["slug"] = slugify(page.name)));
 ---
 
-<div class="galleria-grid">
-  {
-    dataBase.map((item, index) => (
-      <div class="item ">
-        <ImageComponent
-          src={item.images.thumbnail}
-          name={item.name}
-          artist={item.artist.name}
-        />
-      </div>
-    ))
-  }
-</div>
+<main class="pt-10 pb-2">
+  <section class="galleria-grid">
+    {
+      dataBase.map((item, index) => (
+        <div class="item ">
+          <ImageComponent
+            src={item.images.thumbnail}
+            name={item.name}
+            artist={item.artist.name}
+          />
+        </div>
+      ))
+    }
+  </section>
+</main>
 
 <style is:inline>
   .galleria-grid {
@@ -34,7 +36,7 @@ pages.forEach((page, index) => (pages[index]["slug"] = slugify(page.name)));
     column-gap: 2rem;
     -moz-column-fill: balance;
     column-fill: balance;
-    /* margin: 0 auto 0; */
+    margin: 0 auto 0;
   }
   .galleria-grid .item {
     margin: 0 0 2rem;

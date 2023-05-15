@@ -1,45 +1,38 @@
 ---
-import '../style/global.css'
+import "../style/global.css";
 
 // Importing the data base : console.log(data().data)
-import { data } from '../js/data.js'
+import { data } from "../js/data.js";
 
 export interface Props {
-  title: string
+  title: string;
 }
 
-const { title = 'Galleria | Page' } = Astro.props
+const { title = "Galleria | Page" } = Astro.props;
 ---
 
 <head>
   <meta charset="utf-8" />
-  <link
-    rel="icon"
-    type="image/svg+xml"
-    href="/favicon-32x32.png"
-  />
-  <meta
-    name="viewport"
-    content="width=device-width,
-    initial-scale=1.0"
-  />
-  <meta
-    name="generator"
-    content={Astro.generator}
-  />
+  <link rel="icon" type="image/svg+xml" href="/favicon-32x32.png" />
+  <meta name="viewport" content="width=device-width,
+    initial-scale=1.0" />
+  <meta name="generator" content={Astro.generator} />
   <title>{title}</title>
-  <link
-    rel="preconnect"
-    href="https://fonts.googleapis.com"
-  />
-  <link
-    rel="preconnect"
-    href="https://fonts.gstatic.com"
-    crossorigin
-  />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
     href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@700&display=swap"
     rel="stylesheet"
   />
   <script src="../js/global.js"></script>
 </head>
+<style is:global>
+  body {
+    overflow: overlay;
+    display: flex;
+    flex-direction: column;
+    padding: 0 2.5rem;
+    max-width: 1440px;
+    width: screen;
+  }
+</style>

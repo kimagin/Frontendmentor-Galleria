@@ -8,7 +8,7 @@ module.exports = {
     extend: {
       // Screen Size
       screens: {
-        '7xl': '80rem',
+        '7xl': '1440px',
       },
       // Typography
       fontFamily: {
