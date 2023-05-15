@@ -1,0 +1,52 @@
+---
+export interface Props {
+  forward?: boolean;
+  backward?: boolean;
+  view?: boolean;
+  disabled?: boolean;
+}
+
+const {
+  forward = false,
+  backward = false,
+  view = false,
+  disabled = false,
+} = Astro.props as Props;
+---
+
+<!-- Next Button  -->
+
+{forward && 
+  <button 
+    class="p-1"
+    class:list={
+    disabled &&
+    'opacity-20 hover:cursor-default'
+  } 
+  >
+    <img width="24" height="24" src="./images/icon-next-button.svg" alt="back" />
+  </button>
+
+}
+
+<!-- Back Button  -->
+{backward && 
+  <button 
+    class="p-1"
+    class:list={
+    disabled &&
+    'opacity-20 hover:cursor-default'
+  } 
+  >
+    <img width="24" height="24" src="./images/icon-back-button.svg" alt="back" />
+  </button>
+
+}
+
+
+<!-- Image View Button  -->
+
+{view && 
+  <div class="bg-black p-2 w-fit">
+  <img width="24" src="./images/icon-view-image.svg" alt="back" />
+</div>}

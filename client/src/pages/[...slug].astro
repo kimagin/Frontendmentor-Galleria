@@ -2,9 +2,8 @@
 import SlideShowLayout from "../layouts/SlideShowLayout.astro";
 import { slugify } from "../js/utils";
 import PresentationCanvas from "../components/presentation/PresentationCanvas.astro";
-import NavigationControlPanel from "../components/navigation/NavigationControlPanel.astro";
 
-// Dynamic rout creation
+// Dynamic route creation
 export async function getStaticPaths() {
   const SERVER = import.meta.env.SERVER;
   const request = await fetch(SERVER + "assets/imagedata.json");
@@ -63,7 +62,6 @@ const {
 
 <SlideShowLayout title={name}>
   {/*Presentation Page template */}
-
   <PresentationCanvas
     {name}
     {year}

@@ -22,8 +22,6 @@
   body {
     @apply font-serif font-bold;
   }
-  main {
-  }
 }
 
 @layer components {

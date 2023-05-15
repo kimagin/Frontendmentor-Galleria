@@ -1,14 +1,59 @@
-<div class="border-t py-6">
-  <h4>Navigation Control Panel</h4>
-  <!-- Progress Bar -->
-  <div></div>
+---
+import NavigationButton from "./NavigationButton.astro";
+---
+
+<div class="py-6">
+  <!-- Progress Bar Handle -->
+  <!-- @TODO: Javascript for the w-[20%] -->
+  <span
+    class="progress h-[1.2px] bg-black absolute bottom-0 left-0 -translate-y-[96px] origin-left z-30"
+  ></span>
+  <!-- Progress Bar Placeholder -->
+  <span
+    class="w-screen h-[1.2px] bg-neutral-300 absolute bottom-0 left-0 -translate-y-[96px]"
+  ></span>
+
   <!-- Current Image Information-->
-  <div></div>
-  <!-- Navigation Controls -->
-  <div>
-    <!-- Next Slide -->
-    <div></div>
-    <!-- Previous Slide -->
-    <div></div>
+
+  <div class="flex w-full justify-between">
+    <!-- Navigation Controls -->
+    <div class="flex flex-col gap-2">
+      <h3>Starry Night</h3>
+      <p class="subhead2">Vincent Van Gogh</p>
+    </div>
+    <div class="flex">
+      <!-- Next Slide -->
+      <NavigationButton backward disabled />
+      <NavigationButton forward />
+      <!-- Previous Slide -->
+    </div>
   </div>
 </div>
+
+<script is:inline>
+const information = document.getElementsByTagName("section")[0];
+const title = document.getElementsByTagName("h3")[0];
+const subtitle = document.querySelector(".subhead2");
+const progressBar = document.querySelector(".progress");
+
+title.textContent = information.dataset.name;
+subtitle.textContent = information.dataset.artist;
+
+document.addEventListener("DOMContentLoaded", () => {
+  let w = 0;
+  let progressInterval;
+  const duration = 10000; // 5 seconds in milliseconds
+  const startTime = Date.now();
+
+  progressInterval = setInterval(() => {
+    const elapsedTime = Date.now() - startTime;
+    if (elapsedTime >= duration) {
+      clearInterval(progressInterval);
+      w = 0;
+    } else {
+      w = (elapsedTime / duration) * 100;
+    }
+    progressBar.style.width = `${w}%`;
+  }, 1);
+});
+</script>
