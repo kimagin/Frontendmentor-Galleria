@@ -12,7 +12,7 @@ dataBase.forEach((page) => pages.push(page));
 pages.forEach((page, index) => (pages[index]["slug"] = slugify(page.name)));
 ---
 
-<main class="pt-10 pb-2">
+<main class="pt-10 pb-2 min-h-screen">
   <section class="galleria-grid">
     {
       dataBase.map((item, index) => (

@@ -2,7 +2,7 @@
 import NavigationButton from "./NavigationButton.astro";
 ---
 
-<div class="py-6">
+<div class="h-[96px] flex">
   <!-- Progress Bar Handle -->
   <!-- @TODO: Javascript for the w-[20%] -->
   <span
@@ -17,9 +17,9 @@ import NavigationButton from "./NavigationButton.astro";
 
   <div class="flex w-full justify-between">
     <!-- Navigation Controls -->
-    <div class="flex flex-col gap-2">
-      <h3>Starry Night</h3>
-      <p class="subhead2">Vincent Van Gogh</p>
+    <div class="flex flex-col gap-2 justify-center">
+      <h3 class="title"></h3>
+      <p class="subhead2"></p>
     </div>
     <div class="flex gap-8">
       <!-- Next Slide -->
@@ -88,7 +88,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   let w = 0;
   let progressInterval;
-  const duration = 20000; // 20 seconds in milliseconds
+  const duration = 5000; // 20 seconds in milliseconds
   const startTime = Date.now();
 
   progressInterval = setInterval(() => {

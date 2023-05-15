@@ -23,6 +23,13 @@ const initApp = async () => {
     duration: 700,
     delay: anime.stagger(20),
   })
+  anime({
+    targets: ['.title', '.subhead2'],
+    opacity: [0, 1],
+    easing: 'easeInOutSine',
+    duration: 700,
+    delay: anime.stagger(20),
+  })
 }
 
 event(document, 'DOMContentLoaded', initApp)
